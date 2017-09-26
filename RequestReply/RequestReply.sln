@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26020.0
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD83B77A-4D26-424E-97E1-C069143B4DC4}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Consumer\Consumer.csproj", "{75E61A8E-3C76-4717-9FC5-9D24E072B18E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer.Messages", "Consumer.Messages\Consumer.Messages.csproj", "{56A97AEA-AF41-41D0-895C-D76E0008499F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer2", "Consumer2\Consumer2.csproj", "{60466B18-9D24-4B46-ABCD-63EBE7713749}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{56A97AEA-AF41-41D0-895C-D76E0008499F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56A97AEA-AF41-41D0-895C-D76E0008499F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56A97AEA-AF41-41D0-895C-D76E0008499F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60466B18-9D24-4B46-ABCD-63EBE7713749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60466B18-9D24-4B46-ABCD-63EBE7713749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60466B18-9D24-4B46-ABCD-63EBE7713749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60466B18-9D24-4B46-ABCD-63EBE7713749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
