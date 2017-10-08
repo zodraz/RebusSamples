@@ -67,6 +67,14 @@
       <Project>{56A97AEA-AF41-41D0-895C-D76E0008499F}</Project>
       <Name>Consumer.Messages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Consumer2\Consumer2.csproj">
+      <Project>{60466b18-9d24-4b46-abcd-63ebe7713749}</Project>
+      <Name>Consumer2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Consumer\Consumer.csproj">
+      <Project>{75e61a8e-3c76-4717-9fc5-9d24e072b18e}</Project>
+      <Name>Consumer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,6 +6,7 @@ using Rebus.Logging;
 using Rebus.Routing.TypeBased;
 using Rebus.SqlServer.Transport;
 using Rebus;
+using Rebus.Transport.InMem;
 
 namespace Producer
 {
@@ -13,18 +14,17 @@ namespace Producer
     {
         static void Main()
         {
+            const string ConnectionString = "Data Source=VS2017-W2016;Initial Catalog=ActorMessages;Integrated Security=True;MultipleActiveResultSets=True";
+
             using (var adapter = new BuiltinHandlerActivator())
             {
-                //adapter.Handle<Reply>(async reply =>
-                //{
-                //    await Console.Out.WriteLineAsync($"Got reply '{reply.KeyChar}' (from OS process {reply.OsProcessId})");
-                //});
 
                 Configure.With(adapter)
-                    .Logging(l => l.ColoredConsole(minLevel: LogLevel.Warn))
+                    .Logging(l => l.ColoredConsole(minLevel: LogLevel.Debug))
                     .Options(o => o.EnableSynchronousRequestReply(replyMaxAgeSeconds: 7))
-                    .Transport(t => t.UseSqlServer("Data Source=VS2017-W2016;Initial Catalog=ActorMessages;Integrated Security=True;MultipleActiveResultSets=True", "Messages", "producer.input"))
-                    .Routing(r => r.TypeBased().Map<Job>("consumer.input"))
+                     .Options(o => o.LogPipeline(verbose: true))
+                    .Transport(t => t.UseSqlServer(ConnectionString, "Messages", "producer.input"))
+                    .Routing(r => r.TypeBased().Map<Job>("consumer.input").Map<Job2>("consumer2.input"))
                     .Start();
 
                 Console.WriteLine("Press Q to quit , r for a request/response or any other key to produce a job");
@@ -39,6 +39,7 @@ namespace Producer
 
                         case 'r':
                             var reply = adapter.Bus.SendRequest<Reply>(new Job(keyChar)).Result;
+                            Console.WriteLine($"Got reply: {reply.KeyChar} from PID {reply.OsProcessId}");
                             break;
 
                         default:

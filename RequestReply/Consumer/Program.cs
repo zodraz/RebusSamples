@@ -8,15 +8,17 @@ using Rebus.SqlServer.Transport;
 using System.Threading.Tasks;
 using Rebus;
 using Rebus.Routing.TypeBased;
+using Rebus.Transport.InMem;
 
 namespace Consumer
 {
-    class Program
+    public class Consumer2
     {
         const string ConnectionString = "Data Source=VS2017-W2016;Initial Catalog=ActorMessages;Integrated Security=True;MultipleActiveResultSets=True";
 
         static void Main()
         {
+
             using (var adapter = new BuiltinHandlerActivator())
             {
                 adapter.Handle<Job>(async (bus, job) =>
@@ -31,9 +33,11 @@ namespace Consumer
                 });
 
                 Configure.With(adapter)
-                    .Logging(l => l.ColoredConsole(minLevel: LogLevel.Warn))
+                    .Logging(l => l.ColoredConsole(minLevel: LogLevel.Debug))
+                     .Options(o => o.LogPipeline(verbose: true))
                     .Transport(t => t.UseSqlServer(ConnectionString, "Messages", "consumer.input"))
-                    .Routing(r => r.TypeBased().Map<Job2>("consumer2.input"))
+                    //.Routing(r => r.TypeBased().Map<Job>("consumer.input"))
+                    .Routing(r => r.TypeBased().Map<Job>("consumer.input").Map<Job2>("consumer2.input"))
                     .Start();
 
                 Console.WriteLine("Press ENTER to quit");

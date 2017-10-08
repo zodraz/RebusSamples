@@ -7,8 +7,8 @@
     <ProjectGuid>{60466B18-9D24-4B46-ABCD-63EBE7713749}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Consumer</RootNamespace>
-    <AssemblyName>Consumer</AssemblyName>
+    <RootNamespace>Consumer2</RootNamespace>
+    <AssemblyName>Consumer2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

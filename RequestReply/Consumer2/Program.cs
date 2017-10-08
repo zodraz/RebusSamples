@@ -7,10 +7,11 @@ using Rebus.Logging;
 using Rebus.SqlServer.Transport;
 using System.Threading.Tasks;
 using Rebus.Routing.TypeBased;
+using Rebus.Transport.InMem;
 
 namespace Consumer
 {
-    class Program
+    public class Consumer
     {
         const string ConnectionString = "Data Source=VS2017-W2016;Initial Catalog=ActorMessages;Integrated Security=True;MultipleActiveResultSets=True";
 
@@ -28,9 +29,9 @@ namespace Consumer
                 });
 
                 Configure.With(adapter)
-                    .Logging(l => l.ColoredConsole(minLevel: LogLevel.Warn))
+                    .Logging(l => l.ColoredConsole(minLevel: LogLevel.Debug))
                     .Transport(t => t.UseSqlServer(ConnectionString, "Messages", "consumer2.input"))
-                    //.Routing(r => r.TypeBased().Map<Reply2>("consumer.input"))
+                    .Routing(r => r.TypeBased().Map<Job>("consumer.input").Map<Job2>("consumer2.input"))
                     .Start();
 
                 Console.WriteLine("Press ENTER to quit");
